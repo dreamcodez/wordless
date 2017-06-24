@@ -3,12 +3,11 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo Logging in to Amazon ECR...
-      - $(aws ecr get-login --region us-east-1)
+      - $(aws ecr get-login --region $IMAGE_REPO_AWS_REGION)
   build:
     commands:
       - bin/build
-      - docker tag built 341916421549.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:latest
+      - docker tag built $IMAGE_REPO_URL:latest
   post_build:
     commands:
-      - docker push 341916421549.dkr.ecr.us-east-1.amazonaws.com/$IMAGE_REPO_NAME:latest
+      - docker push $IMAGE_REPO_URL:latest
