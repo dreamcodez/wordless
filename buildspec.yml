@@ -3,7 +3,7 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - $(aws ecr get-login --region $IMAGE_REPO_AWS_REGION)
+      - $(aws ecr get-login --region $ECR_AWS_REGION)
   build:
     commands:
       - bin/build
