@@ -2,7 +2,11 @@
 
 # build & extract artifacts
 docker build -f Dockerfile.build -t built .
-docker rm built
+
+set +e
+docker rm -f built
+set -e
+
 docker create --name built built
 
 mkdir -p target
