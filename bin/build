@@ -11,7 +11,7 @@ docker create --name build build
 
 mkdir -p target
 rm -rf target/*
-docker cp built:/go/src/app/app target/app
+docker cp build:/go/src/app/app target/app
 
 # final image
 docker build -f Dockerfile -t final .
