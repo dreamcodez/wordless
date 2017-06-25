@@ -7,7 +7,7 @@ phases:
   build:
     commands:
       - bin/build
-      - docker tag built $IMAGE_REPO_URL:latest
+      - docker tag final $IMAGE_REPO_URL:latest
   post_build:
     commands:
       - docker push $IMAGE_REPO_URL:latest

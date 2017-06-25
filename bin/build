@@ -1,17 +1,17 @@
 #!/bin/sh -xe
 
 # build & extract artifacts
-docker build -f Dockerfile.build -t built .
+docker build -f Dockerfile.build -t build .
 
 set +e
-docker rm -f built
+docker rm -f build
 set -e
 
-docker create --name built built
+docker create --name build build
 
 mkdir -p target
 rm -rf target/*
 docker cp built:/go/src/app/app target/app
 
 # final image
-docker build -f Dockerfile .
+docker build -f Dockerfile -t final .
